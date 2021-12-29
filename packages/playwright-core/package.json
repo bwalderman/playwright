@@ -8,28 +8,35 @@
     "node": ">=12"
   },
   "scripts": {
-    "prepare": "babel --config-file ../../babel.config.json -s --extensions \".ts\" --out-dir lib/utils/ src/utils"
+    "prepare": "babel --config-file ../../babel.config.json -s --extensions \".ts\" --out-dir lib/cjs/utils/ src/utils"
   },
   "author": {
     "name": "Microsoft Corporation"
   },
   "license": "Apache-2.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
+      "node": {
+        "import": "./index.mjs",
+        "require": "./index.js"
+      },
+      "default": {
+        "import": "./lib/esm/index.js"
+      }
     },
     "./cli": "./cli.js",
     "./package.json": "./package.json",
-    "./lib/grid/gridServer": "./lib/grid/gridServer.js",
-    "./lib/grid/gridClient": "./lib/grid/gridClient.js",
-    "./lib/grid/dockerGridFactory": "./lib/grid/dockerGridFactory.js",
-    "./lib/utils/async": "./lib/utils/async.js",
-    "./lib/utils/httpServer": "./lib/utils/httpServer.js",
-    "./lib/utils/multimap": "./lib/utils/multimap.js",
-    "./lib/utils/processLauncher": "./lib/utils/processLauncher.js",
-    "./lib/utils/registry": "./lib/utils/registry.js",
-    "./lib/utils/utils": "./lib/utils/utils.js"
+    "./lib/grid/gridServer": "./lib/cjs/grid/gridServer.js",
+    "./lib/grid/gridClient": "./lib/cjs/grid/gridClient.js",
+    "./lib/grid/dockerGridFactory": "./lib/cjs/grid/dockerGridFactory.js",
+    "./lib/utils/async": "./lib/cjs/utils/async.js",
+    "./lib/utils/httpServer": "./lib/cjs/utils/httpServer.js",
+    "./lib/utils/multimap": "./lib/cjs/utils/multimap.js",
+    "./lib/utils/processLauncher": "./lib/cjs/utils/processLauncher.js",
+    "./lib/utils/registry": "./lib/cjs/utils/registry.js",
+    "./lib/utils/utils": "./lib/cjs/utils/utils.js"
   },
   "types": "types/types.d.ts",
   "bin": {

@@ -172,22 +172,31 @@ for (const file of webPackFiles) {
   });
 }
 
-// Run Babel.
-for (const packageDir of packages) {
-  if (!fs.existsSync(path.join(packageDir, 'src')))
-    continue;
-  steps.push({
+function babelBuild(packageDir, babelEnv, outDir) {
+  return {
     command: 'npx',
     args: [
       'babel',
       ...(watchMode ? ['-w', '--source-maps'] : []),
       '--extensions', '.ts',
-      '--out-dir', path.join(packageDir, 'lib'),
+      '--out-dir', path.join(packageDir, 'lib', outDir),
       '--ignore', '"packages/playwright-core/src/server/injected/**/*"',
       path.join(packageDir, 'src')],
     shell: true,
-  });
+    env: {
+      BABEL_ENV: babelEnv
+    }
+  }
 }
+
+// Build CommonJS and ESM variants of playwright-core.
+const playwrightCorePath = path.join(ROOT, 'packages', 'playwright-core');
+steps.push(babelBuild(playwrightCorePath, 'development', 'cjs')); // TODO: Use separate babel.config.js files instead of ENV.
+steps.push(babelBuild(playwrightCorePath, 'esm', 'esm'));
+
+// Build CommonJS only for playwright-test. TODO: ESM variant for this as well?
+const playwrightTestPath = path.join(ROOT, 'packages', 'playwright-test');
+steps.push(babelBuild(playwrightTestPath, 'development', '.'));
 
 
 // Generate channels.
@@ -223,32 +232,36 @@ onChanges.push({
 copyFiles.push({
   files: 'packages/playwright-core/src/server/chromium/*.png',
   from: 'packages/playwright-core/src',
-  to: 'packages/playwright-core/lib',
+  to: 'packages/playwright-core/lib/cjs',
 });
 
-// Babel doesn't touch JS files, so copy them manually.
-// For example: diff_match_patch.js
-copyFiles.push({
-  files: 'packages/playwright-core/src/**/*.js',
-  from: 'packages/playwright-core/src',
-  to: 'packages/playwright-core/lib',
-  ignored: ['**/.eslintrc.js', '**/webpack*.config.js', '**/injected/**/*']
-});
+// Run these copy steps for both the CJS and ESM output directories to ensure
+// imported .js or .json resources are resolvable from within both directories.
+for (const target of ['cjs', 'esm']) {
+  // Babel doesn't touch JS files, so copy them manually.
+  // For example: diff_match_patch.js
+  copyFiles.push({
+    files: 'packages/playwright-core/src/**/*.js',
+    from: 'packages/playwright-core/src',
+    to: path.join('packages/playwright-core/lib', target),
+    ignored: ['**/.eslintrc.js', '**/webpack*.config.js', '**/injected/**/*']
+  });
+
+  // Sometimes we require JSON files that babel ignores.
+  // For example, deviceDescriptorsSource.json
+  copyFiles.push({
+    files: 'packages/playwright-core/src/**/*.json',
+    from: 'packages/playwright-core/src',
+    to: path.join('packages/playwright-core/lib', target),
+    ignored: ['**/injected/**/*'],
+  });
+}
 
 copyFiles.push({
   files: 'packages/playwright-test/src/**/*.js',
   from: 'packages/playwright-test/src',
   to: 'packages/playwright-test/lib',
   ignored: ['**/.eslintrc.js']
-});
-
-// Sometimes we require JSON files that babel ignores.
-// For example, deviceDescriptorsSource.json
-copyFiles.push({
-  files: 'packages/playwright-core/src/**/*.json',
-  ignored: ['**/injected/**/*'],
-  from: 'packages/playwright-core/src',
-  to: 'packages/playwright-core/lib',
 });
 
 if (lintMode) {

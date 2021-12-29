@@ -16,6 +16,7 @@
     "noEmit": true,
     "noImplicitOverride": true,
     "useUnknownInCatchVariables": false,
+    "isolatedModules": true
   },
   "compileOnSave": true,
   "include": ["packages"],

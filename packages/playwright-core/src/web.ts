@@ -14,5 +14,15 @@
  * limitations under the License.
  */
 
-require('./lib/utils/verifyNodeJsVersion');
-module.exports = require('./lib/cjs');
+import { Connection } from "./client/connection";
+import type { Playwright } from "./client/playwright";
+
+export class PlaywrightClient {
+    public static async connect(): Promise<PlaywrightClient> {
+        const connection = new Connection();
+        const pw = await connection.initializePlaywright();
+        return new PlaywrightClient(pw);
+    }
+
+    private constructor(private _pw: Playwright) {}
+}

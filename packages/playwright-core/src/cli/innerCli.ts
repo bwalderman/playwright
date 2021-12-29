@@ -22,7 +22,7 @@ import path from 'path';
 import { program, Command } from 'commander';
 import { runDriver, runServer, printApiJson, launchBrowserServer } from './driver';
 import { showTraceViewer } from '../server/trace/viewer/traceViewer';
-import * as playwright from '../..';
+import * as playwright from '..';
 import { BrowserContext } from '../client/browserContext';
 import { Browser } from '../client/browser';
 import { Page } from '../client/page';
@@ -34,7 +34,7 @@ import { spawnAsync, getPlaywrightVersion } from '../utils/utils';
 import { launchGridAgent } from '../grid/gridAgent';
 import { GridServer, GridFactory } from '../grid/gridServer';
 
-const packageJSON = require('../../package.json');
+const packageJSON = require('../../../package.json');
 
 program
     .version('Version ' + (process.env.PW_CLI_DISPLAY_VERSION || packageJSON.version))
