@@ -16,10 +16,10 @@
 
 import WebSocket from 'ws';
 import debug from 'debug';
-import { DispatcherConnection, Root } from '../dispatchers/dispatcher';
-import { PlaywrightDispatcher } from '../dispatchers/playwrightDispatcher';
-import { createPlaywright } from '../server/playwright';
-import { gracefullyCloseAll } from '../utils/processLauncher';
+import { DispatcherConnection, Root } from '../../dispatchers/dispatcher';
+import { PlaywrightDispatcher } from '../../dispatchers/playwrightDispatcher';
+import { createPlaywright } from '../../server/playwright';
+import { gracefullyCloseAll } from '../../utils/processLauncher';
 
 function launchGridWorker(gridURL: string, agentId: string, workerId: string) {
   const log = debug(`[worker ${workerId}]`);

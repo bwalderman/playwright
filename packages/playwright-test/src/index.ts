@@ -20,7 +20,7 @@ import type { LaunchOptions, BrowserContextOptions, Page, BrowserContext, Browse
 import type { TestType, PlaywrightTestArgs, PlaywrightTestOptions, PlaywrightWorkerArgs, PlaywrightWorkerOptions, TestInfo } from '../types/test';
 import { rootTestType } from './testType';
 import { createGuid, removeFolders } from 'playwright-core/lib/utils/utils';
-import { GridClient } from 'playwright-core/lib/grid/gridClient';
+import { GridClient } from 'playwright-core/lib/node/grid/gridClient';
 import { prependToTestError } from './util';
 export { expect } from './expect';
 export const _baseTest: TestType<{}, {}> = rootTestType.test;

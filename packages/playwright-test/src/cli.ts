@@ -25,8 +25,8 @@ import { stopProfiling, startProfiling } from './profiler';
 import { FilePatternFilter } from './util';
 import { Loader } from './loader';
 import { showHTMLReport } from './reporters/html';
-import { GridServer } from 'playwright-core/lib/grid/gridServer';
-import dockerFactory from 'playwright-core/lib/grid/dockerGridFactory';
+import { GridServer } from 'playwright-core/lib/node/grid/gridServer';
+import dockerFactory from 'playwright-core/lib/node/grid/dockerGridFactory';
 import { createGuid } from 'playwright-core/lib/utils/utils';
 
 const defaultTimeout = 30000;
