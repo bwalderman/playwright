@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import { Browser } from '../node/server/browser';
-import * as channels from '../protocol/channels';
+import { Browser } from '../server/browser';
+import * as channels from '../../protocol/channels';
 import { BrowserContextDispatcher } from './browserContextDispatcher';
 import { CDPSessionDispatcher } from './cdpSessionDispatcher';
 import { Dispatcher, DispatcherScope } from './dispatcher';
-import { CRBrowser } from '../node/server/chromium/crBrowser';
+import { CRBrowser } from '../server/chromium/crBrowser';
 import { PageDispatcher } from './pageDispatcher';
-import { CallMetadata } from '../node/server/instrumentation';
+import { CallMetadata } from '../server/instrumentation';
 
 export class BrowserDispatcher extends Dispatcher<Browser, channels.BrowserChannel> implements channels.BrowserChannel {
   _type_Browser = true;

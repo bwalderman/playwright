@@ -19,9 +19,9 @@ import fs from 'fs';
 import path from 'path';
 import yauzl from 'yauzl';
 import yazl from 'yazl';
-import * as channels from '../protocol/channels';
-import { ManualPromise } from '../utils/async';
-import { assert, createGuid } from '../utils/utils';
+import * as channels from '../../protocol/channels';
+import { ManualPromise } from '../../utils/async';
+import { assert, createGuid } from '../../utils/utils';
 import { Dispatcher, DispatcherScope } from './dispatcher';
 
 export class LocalUtilsDispatcher extends Dispatcher<{ guid: string }, channels.LocalUtilsChannel> implements channels.LocalUtilsChannel {

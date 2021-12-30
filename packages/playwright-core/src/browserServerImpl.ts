@@ -17,23 +17,23 @@
 import { LaunchServerOptions, Logger } from './client/types';
 import { Browser } from './node/server/browser';
 import { EventEmitter } from 'ws';
-import { Dispatcher, DispatcherConnection, DispatcherScope, Root } from './dispatchers/dispatcher';
-import { BrowserContextDispatcher } from './dispatchers/browserContextDispatcher';
+import { Dispatcher, DispatcherConnection, DispatcherScope, Root } from './node/dispatchers/dispatcher';
+import { BrowserContextDispatcher } from './node/dispatchers/browserContextDispatcher';
 import * as channels from './protocol/channels';
 import { BrowserServerLauncher, BrowserServer } from './client/browserType';
 import { envObjectToArray } from './client/clientHelper';
 import { createGuid } from './utils/utils';
-import { SelectorsDispatcher } from './dispatchers/selectorsDispatcher';
+import { SelectorsDispatcher } from './node/dispatchers/selectorsDispatcher';
 import { Selectors } from './node/server/selectors';
 import { ProtocolLogger } from './node/server/types';
 import { CallMetadata, internalCallMetadata } from './node/server/instrumentation';
 import { createPlaywright, Playwright } from './node/server/playwright';
-import { PlaywrightDispatcher } from './dispatchers/playwrightDispatcher';
+import { PlaywrightDispatcher } from './node/dispatchers/playwrightDispatcher';
 import { PlaywrightServer, PlaywrightServerDelegate } from './remote/playwrightServer';
 import { BrowserContext } from './node/server/browserContext';
 import { CRBrowser } from './node/server/chromium/crBrowser';
-import { CDPSessionDispatcher } from './dispatchers/cdpSessionDispatcher';
-import { PageDispatcher } from './dispatchers/pageDispatcher';
+import { CDPSessionDispatcher } from './node/dispatchers/cdpSessionDispatcher';
+import { PageDispatcher } from './node/dispatchers/pageDispatcher';
 
 export class BrowserServerLauncherImpl implements BrowserServerLauncher {
   private _browserName: 'chromium' | 'firefox' | 'webkit';

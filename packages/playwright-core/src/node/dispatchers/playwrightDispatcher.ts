@@ -15,13 +15,13 @@
  */
 
 import net, { AddressInfo } from 'net';
-import * as channels from '../protocol/channels';
-import { GlobalAPIRequestContext } from '../node/server/fetch';
-import { Playwright } from '../node/server/playwright';
-import * as types from '../node/server/types';
-import { debugLogger } from '../utils/debugLogger';
-import { SocksConnection, SocksConnectionClient } from '../utils/socksProxy';
-import { createGuid } from '../utils/utils';
+import * as channels from '../../protocol/channels';
+import { GlobalAPIRequestContext } from '../server/fetch';
+import { Playwright } from '../server/playwright';
+import * as types from '../server/types';
+import { debugLogger } from '../../utils/debugLogger';
+import { SocksConnection, SocksConnectionClient } from '../../utils/socksProxy';
+import { createGuid } from '../../utils/utils';
 import { AndroidDispatcher } from './androidDispatcher';
 import { BrowserTypeDispatcher } from './browserTypeDispatcher';
 import { Dispatcher, DispatcherScope } from './dispatcher';

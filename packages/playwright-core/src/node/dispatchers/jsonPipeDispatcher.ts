@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import * as channels from '../protocol/channels';
+import * as channels from '../../protocol/channels';
 import { Dispatcher, DispatcherScope } from './dispatcher';
-import { createGuid } from '../utils/utils';
-import { serializeError } from '../protocol/serializers';
+import { createGuid } from '../../utils/utils';
+import { serializeError } from '../../protocol/serializers';
 
 export class JsonPipeDispatcher extends Dispatcher<{ guid: string }, channels.JsonPipeChannel> implements channels.JsonPipeChannel {
   _type_JsonPipe = true;

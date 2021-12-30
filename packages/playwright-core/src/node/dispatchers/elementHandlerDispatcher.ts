@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import { ElementHandle } from '../node/server/dom';
-import * as js from '../node/server/javascript';
-import * as channels from '../protocol/channels';
+import { ElementHandle } from '../server/dom';
+import * as js from '../server/javascript';
+import * as channels from '../../protocol/channels';
 import { DispatcherScope, existingDispatcher, lookupNullableDispatcher } from './dispatcher';
 import { JSHandleDispatcher, serializeResult, parseArgument } from './jsHandleDispatcher';
 import { FrameDispatcher } from './frameDispatcher';
-import { CallMetadata } from '../node/server/instrumentation';
+import { CallMetadata } from '../server/instrumentation';
 
 export class ElementHandleDispatcher extends JSHandleDispatcher implements channels.ElementHandleChannel {
   _type_ElementHandle = true;

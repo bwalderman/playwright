@@ -17,8 +17,8 @@
 import debug from 'debug';
 import * as http from 'http';
 import * as ws from 'ws';
-import { DispatcherConnection, Root } from '../dispatchers/dispatcher';
-import { PlaywrightDispatcher } from '../dispatchers/playwrightDispatcher';
+import { DispatcherConnection, Root } from '../node/dispatchers/dispatcher';
+import { PlaywrightDispatcher } from '../node/dispatchers/playwrightDispatcher';
 import { createPlaywright, Playwright } from '../node/server/playwright';
 import { gracefullyCloseAll } from '../utils/processLauncher';
 

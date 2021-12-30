@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import { DispatcherConnection, Root } from './dispatchers/dispatcher';
+import { DispatcherConnection, Root } from './node/dispatchers/dispatcher';
 import { createPlaywright } from './node/server/playwright';
 import type { Playwright as PlaywrightAPI } from './client/playwright';
-import { PlaywrightDispatcher } from './dispatchers/playwrightDispatcher';
+import { PlaywrightDispatcher } from './node/dispatchers/playwrightDispatcher';
 import { Connection } from './client/connection';
 import { BrowserServerLauncherImpl } from './browserServerImpl';
 

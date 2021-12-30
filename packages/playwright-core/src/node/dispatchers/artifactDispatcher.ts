@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-import * as channels from '../protocol/channels';
+import * as channels from '../../protocol/channels';
 import { Dispatcher, DispatcherScope } from './dispatcher';
 import { StreamDispatcher } from './streamDispatcher';
 import fs from 'fs';
-import { mkdirIfNeeded } from '../utils/utils';
-import { Artifact } from '../node/server/artifact';
+import { mkdirIfNeeded } from '../../utils/utils';
+import { Artifact } from '../server/artifact';
 
 export class ArtifactDispatcher extends Dispatcher<Artifact, channels.ArtifactChannel> implements channels.ArtifactChannel {
   _type_Artifact = true;

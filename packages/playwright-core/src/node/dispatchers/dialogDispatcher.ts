@@ -14,17 +14,25 @@
  * limitations under the License.
  */
 
+import { Dialog } from '../server/dialog';
+import * as channels from '../../protocol/channels';
 import { Dispatcher, DispatcherScope } from './dispatcher';
-import * as channels from '../protocol/channels';
-import { Selectors } from '../node/server/selectors';
 
-export class SelectorsDispatcher extends Dispatcher<Selectors, channels.SelectorsChannel> implements channels.SelectorsChannel {
-  _type_Selectors = true;
-  constructor(scope: DispatcherScope, selectors: Selectors) {
-    super(scope, selectors, 'Selectors', {});
+export class DialogDispatcher extends Dispatcher<Dialog, channels.DialogChannel> implements channels.DialogChannel {
+  _type_Dialog = true;
+  constructor(scope: DispatcherScope, dialog: Dialog) {
+    super(scope, dialog, 'Dialog', {
+      type: dialog.type(),
+      message: dialog.message(),
+      defaultValue: dialog.defaultValue(),
+    });
   }
 
-  async register(params: channels.SelectorsRegisterParams): Promise<void> {
-    await this._object.register(params.name, params.source, params.contentScript);
+  async accept(params: { promptText?: string }): Promise<void> {
+    await this._object.accept(params.promptText);
+  }
+
+  async dismiss(): Promise<void> {
+    await this._object.dismiss();
   }
 }

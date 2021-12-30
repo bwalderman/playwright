@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-import { BrowserType } from '../node/server/browserType';
+import { BrowserType } from '../server/browserType';
 import { BrowserDispatcher } from './browserDispatcher';
-import * as channels from '../protocol/channels';
+import * as channels from '../../protocol/channels';
 import { Dispatcher, DispatcherScope } from './dispatcher';
 import { BrowserContextDispatcher } from './browserContextDispatcher';
-import { CallMetadata } from '../node/server/instrumentation';
+import { CallMetadata } from '../server/instrumentation';
 import WebSocket from 'ws';
-import { JsonPipeDispatcher } from '../dispatchers/jsonPipeDispatcher';
-import { getUserAgent, makeWaitForNextTask } from '../utils/utils';
-import { ManualPromise } from '../utils/async';
+import { JsonPipeDispatcher } from './jsonPipeDispatcher';
+import { getUserAgent, makeWaitForNextTask } from '../../utils/utils';
+import { ManualPromise } from '../../utils/async';
 
 export class BrowserTypeDispatcher extends Dispatcher<BrowserType, channels.BrowserTypeChannel> implements channels.BrowserTypeChannel {
   _type_BrowserType = true;
