@@ -23,7 +23,7 @@ import lockfile from 'proper-lockfile';
 import { getUbuntuVersion } from './ubuntuVersion';
 import { getFromENV, getAsBooleanFromENV, calculateSha1, removeFolders, existsAsync, hostPlatform, canAccessFile, spawnAsync, fetchData, wrapInASCIIBox, transformCommandsForRoot } from './utils';
 import { DependencyGroup, installDependenciesLinux, installDependenciesWindows, validateDependenciesLinux, validateDependenciesWindows } from './dependencies';
-import { downloadBrowserWithProgressBar, logPolitely } from './browserFetcher';
+import { downloadBrowserWithProgressBar, logPolitely } from '../node/utils/browserFetcher';
 
 const PACKAGE_PATH = path.join(__dirname, '..', '..');
 const BIN_PATH = path.join(__dirname, '..', '..', 'bin');
