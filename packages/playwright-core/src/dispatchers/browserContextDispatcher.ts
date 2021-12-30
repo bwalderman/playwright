@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-import { BrowserContext } from '../server/browserContext';
+import { BrowserContext } from '../node/server/browserContext';
 import { Dispatcher, DispatcherScope, lookupDispatcher } from './dispatcher';
 import { PageDispatcher, BindingCallDispatcher, WorkerDispatcher } from './pageDispatcher';
 import { FrameDispatcher } from './frameDispatcher';
 import * as channels from '../protocol/channels';
 import { RouteDispatcher, RequestDispatcher, ResponseDispatcher, APIRequestContextDispatcher } from './networkDispatchers';
-import { CRBrowserContext } from '../server/chromium/crBrowser';
+import { CRBrowserContext } from '../node/server/chromium/crBrowser';
 import { CDPSessionDispatcher } from './cdpSessionDispatcher';
-import { RecorderSupplement } from '../server/supplements/recorderSupplement';
-import { CallMetadata } from '../server/instrumentation';
+import { RecorderSupplement } from '../node/server/supplements/recorderSupplement';
+import { CallMetadata } from '../node/server/instrumentation';
 import { ArtifactDispatcher } from './artifactDispatcher';
-import { Artifact } from '../server/artifact';
-import { Request, Response } from '../server/network';
+import { Artifact } from '../node/server/artifact';
+import { Request, Response } from '../node/server/network';
 
 export class BrowserContextDispatcher extends Dispatcher<BrowserContext, channels.BrowserContextChannel> implements channels.BrowserContextChannel {
   _type_EventTarget = true;

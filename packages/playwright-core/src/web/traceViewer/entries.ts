@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import type { ResourceSnapshot } from '../../server/trace/common/snapshotTypes';
-import * as trace from '../../server/trace/common/traceEvents';
+import type { ResourceSnapshot } from '../../node/server/trace/common/snapshotTypes';
+import * as trace from '../../node/server/trace/common/traceEvents';
 
 export type ContextEntry = {
   startTime: number;

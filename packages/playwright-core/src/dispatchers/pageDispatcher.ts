@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { BrowserContext } from '../server/browserContext';
-import { Frame } from '../server/frames';
-import { Page, Worker } from '../server/page';
+import { BrowserContext } from '../node/server/browserContext';
+import { Frame } from '../node/server/frames';
+import { Page, Worker } from '../node/server/page';
 import * as channels from '../protocol/channels';
 import { Dispatcher, DispatcherScope, existingDispatcher, lookupDispatcher, lookupNullableDispatcher } from './dispatcher';
 import { parseError, serializeError } from '../protocol/serializers';
@@ -26,13 +26,13 @@ import { FrameDispatcher } from './frameDispatcher';
 import { RequestDispatcher, ResponseDispatcher, RouteDispatcher, WebSocketDispatcher } from './networkDispatchers';
 import { serializeResult, parseArgument } from './jsHandleDispatcher';
 import { ElementHandleDispatcher } from './elementHandlerDispatcher';
-import { FileChooser } from '../server/fileChooser';
-import { CRCoverage } from '../server/chromium/crCoverage';
-import { JSHandle } from '../server/javascript';
-import { CallMetadata } from '../server/instrumentation';
-import { Artifact } from '../server/artifact';
+import { FileChooser } from '../node/server/fileChooser';
+import { CRCoverage } from '../node/server/chromium/crCoverage';
+import { JSHandle } from '../node/server/javascript';
+import { CallMetadata } from '../node/server/instrumentation';
+import { Artifact } from '../node/server/artifact';
 import { ArtifactDispatcher } from './artifactDispatcher';
-import { Download } from '../server/download';
+import { Download } from '../node/server/download';
 import { createGuid } from '../utils/utils';
 
 export class PageDispatcher extends Dispatcher<Page, channels.PageChannel> implements channels.PageChannel {

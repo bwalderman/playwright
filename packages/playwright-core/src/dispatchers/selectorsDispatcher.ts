@@ -16,7 +16,7 @@
 
 import { Dispatcher, DispatcherScope } from './dispatcher';
 import * as channels from '../protocol/channels';
-import { Selectors } from '../server/selectors';
+import { Selectors } from '../node/server/selectors';
 
 export class SelectorsDispatcher extends Dispatcher<Selectors, channels.SelectorsChannel> implements channels.SelectorsChannel {
   _type_Selectors = true;

@@ -16,7 +16,7 @@
 
 import './recorder.css';
 import * as React from 'react';
-import type { CallLog, Mode, Source } from '../../server/supplements/recorder/recorderTypes';
+import type { CallLog, Mode, Source } from '../../node/server/supplements/recorder/recorderTypes';
 import { Recorder } from './recorder';
 
 declare global {

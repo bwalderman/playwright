@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-import { BrowserType } from '../server/browserType';
+import { BrowserType } from '../node/server/browserType';
 import { BrowserDispatcher } from './browserDispatcher';
 import * as channels from '../protocol/channels';
 import { Dispatcher, DispatcherScope } from './dispatcher';
 import { BrowserContextDispatcher } from './browserContextDispatcher';
-import { CallMetadata } from '../server/instrumentation';
+import { CallMetadata } from '../node/server/instrumentation';
 import WebSocket from 'ws';
 import { JsonPipeDispatcher } from '../dispatchers/jsonPipeDispatcher';
 import { getUserAgent, makeWaitForNextTask } from '../utils/utils';

@@ -15,7 +15,7 @@
   limitations under the License.
 */
 
-import { ActionTraceEvent } from '../../../server/trace/common/traceEvents';
+import { ActionTraceEvent } from '../../../node/server/trace/common/traceEvents';
 import { ContextEntry } from '../entries';
 import './timeline.css';
 import { Boundaries } from '../geometry';

@@ -15,7 +15,7 @@
  */
 
 import { EventEmitter } from 'events';
-import { FrameSnapshot, ResourceSnapshot } from '../../server/trace/common/snapshotTypes';
+import { FrameSnapshot, ResourceSnapshot } from '../../node/server/trace/common/snapshotTypes';
 import { SnapshotRenderer } from './snapshotRenderer';
 
 export interface SnapshotStorage {

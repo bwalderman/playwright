@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-import { BrowserContext } from '../../server/browserContext';
+import { BrowserContext } from '../../node/server/browserContext';
 import { eventsHelper } from '../../utils/eventsHelper';
-import { Page } from '../../server/page';
-import { FrameSnapshot } from '../../server/trace/common/snapshotTypes';
+import { Page } from '../../node/server/page';
+import { FrameSnapshot } from '../../node/server/trace/common/snapshotTypes';
 import { SnapshotRenderer } from './snapshotRenderer';
 import { BaseSnapshotStorage } from './snapshotStorage';
-import { Snapshotter, SnapshotterBlob, SnapshotterDelegate } from '../../server/trace/recorder/snapshotter';
-import { ElementHandle } from '../../server/dom';
-import { HarTracer, HarTracerDelegate } from '../../server/supplements/har/harTracer';
-import * as har from '../../server/supplements/har/har';
+import { Snapshotter, SnapshotterBlob, SnapshotterDelegate } from '../../node/server/trace/recorder/snapshotter';
+import { ElementHandle } from '../../node/server/dom';
+import { HarTracer, HarTracerDelegate } from '../../node/server/supplements/har/harTracer';
+import * as har from '../../node/server/supplements/har/har';
 
 export class InMemorySnapshotter extends BaseSnapshotStorage implements SnapshotterDelegate, HarTracerDelegate {
   private _blobs = new Map<string, Buffer>();

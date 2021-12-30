@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { ConsoleMessage } from '../server/console';
+import { ConsoleMessage } from '../node/server/console';
 import * as channels from '../protocol/channels';
 import { Dispatcher, DispatcherScope } from './dispatcher';
 import { ElementHandleDispatcher } from './elementHandlerDispatcher';

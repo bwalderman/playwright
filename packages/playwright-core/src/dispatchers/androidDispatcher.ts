@@ -15,10 +15,10 @@
  */
 
 import { Dispatcher, DispatcherScope, existingDispatcher } from './dispatcher';
-import { Android, AndroidDevice, SocketBackend } from '../server/android/android';
+import { Android, AndroidDevice, SocketBackend } from '../node/server/android/android';
 import * as channels from '../protocol/channels';
 import { BrowserContextDispatcher } from './browserContextDispatcher';
-import { CallMetadata } from '../server/instrumentation';
+import { CallMetadata } from '../node/server/instrumentation';
 
 export class AndroidDispatcher extends Dispatcher<Android, channels.AndroidChannel> implements channels.AndroidChannel {
   _type_Android = true;

@@ -16,7 +16,7 @@
 
 import './callLog.css';
 import * as React from 'react';
-import type { CallLog } from '../../server/supplements/recorder/recorderTypes';
+import type { CallLog } from '../../node/server/supplements/recorder/recorderTypes';
 import { msToString } from '../uiUtils';
 
 export interface CallLogProps {

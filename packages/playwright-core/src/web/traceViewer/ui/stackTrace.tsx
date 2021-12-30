@@ -16,7 +16,7 @@
 
 import * as React from 'react';
 import './stackTrace.css';
-import { ActionTraceEvent } from '../../../server/trace/common/traceEvents';
+import { ActionTraceEvent } from '../../../node/server/trace/common/traceEvents';
 
 export const StackTraceView: React.FunctionComponent<{
   action: ActionTraceEvent | undefined,

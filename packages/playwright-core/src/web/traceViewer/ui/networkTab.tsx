@@ -15,7 +15,7 @@
  */
 
 import * as React from 'react';
-import { ActionTraceEvent } from '../../../server/trace/common/traceEvents';
+import { ActionTraceEvent } from '../../../node/server/trace/common/traceEvents';
 import * as modelUtil from './modelUtil';
 import { NetworkResourceDetails } from './networkResourceDetails';
 import './networkTab.css';

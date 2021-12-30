@@ -14,7 +14,7 @@
   limitations under the License.
 */
 
-import { ActionTraceEvent } from '../../../server/trace/common/traceEvents';
+import { ActionTraceEvent } from '../../../node/server/trace/common/traceEvents';
 import { ContextEntry, createEmptyContext } from '../entries';
 import { ActionList } from './actionList';
 import { TabbedPane } from './tabbedPane';

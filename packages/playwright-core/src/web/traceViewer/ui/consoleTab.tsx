@@ -16,7 +16,7 @@
 
 import * as React from 'react';
 import './consoleTab.css';
-import { ActionTraceEvent } from '../../../server/trace/common/traceEvents';
+import { ActionTraceEvent } from '../../../node/server/trace/common/traceEvents';
 import * as channels from '../../../protocol/channels';
 import * as modelUtil from './modelUtil';
 

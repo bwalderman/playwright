@@ -18,7 +18,7 @@ import './actionList.css';
 import './tabbedPane.css';
 import * as React from 'react';
 import * as modelUtil from './modelUtil';
-import { ActionTraceEvent } from '../../../server/trace/common/traceEvents';
+import { ActionTraceEvent } from '../../../node/server/trace/common/traceEvents';
 import { msToString } from '../../uiUtils';
 
 export interface ActionListProps {

@@ -15,7 +15,7 @@
  */
 
 import { DispatcherConnection, Root } from './dispatchers/dispatcher';
-import { createPlaywright } from './server/playwright';
+import { createPlaywright } from './node/server/playwright';
 import type { Playwright as PlaywrightAPI } from './client/playwright';
 import { PlaywrightDispatcher } from './dispatchers/playwrightDispatcher';
 import { Connection } from './client/connection';

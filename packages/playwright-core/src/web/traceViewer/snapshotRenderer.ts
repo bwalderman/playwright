@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { FrameSnapshot, NodeSnapshot, RenderedFrameSnapshot, ResourceSnapshot } from '../../server/trace/common/snapshotTypes';
+import { FrameSnapshot, NodeSnapshot, RenderedFrameSnapshot, ResourceSnapshot } from '../../node/server/trace/common/snapshotTypes';
 
 export class SnapshotRenderer {
   private _snapshots: FrameSnapshot[];

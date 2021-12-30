@@ -24,7 +24,7 @@ import { DispatcherConnection, Root } from '../../dispatchers/dispatcher';
 import { PlaywrightDispatcher } from '../../dispatchers/playwrightDispatcher';
 import { Transport } from '../../protocol/transport';
 import { PlaywrightServer } from '../../remote/playwrightServer';
-import { createPlaywright } from '../../server/playwright';
+import { createPlaywright } from '../server/playwright';
 import { gracefullyCloseAll } from '../../utils/processLauncher';
 
 export function printApiJson() {

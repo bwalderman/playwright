@@ -15,7 +15,7 @@
  */
 
 import { LaunchServerOptions, Logger } from './client/types';
-import { Browser } from './server/browser';
+import { Browser } from './node/server/browser';
 import { EventEmitter } from 'ws';
 import { Dispatcher, DispatcherConnection, DispatcherScope, Root } from './dispatchers/dispatcher';
 import { BrowserContextDispatcher } from './dispatchers/browserContextDispatcher';
@@ -24,14 +24,14 @@ import { BrowserServerLauncher, BrowserServer } from './client/browserType';
 import { envObjectToArray } from './client/clientHelper';
 import { createGuid } from './utils/utils';
 import { SelectorsDispatcher } from './dispatchers/selectorsDispatcher';
-import { Selectors } from './server/selectors';
-import { ProtocolLogger } from './server/types';
-import { CallMetadata, internalCallMetadata } from './server/instrumentation';
-import { createPlaywright, Playwright } from './server/playwright';
+import { Selectors } from './node/server/selectors';
+import { ProtocolLogger } from './node/server/types';
+import { CallMetadata, internalCallMetadata } from './node/server/instrumentation';
+import { createPlaywright, Playwright } from './node/server/playwright';
 import { PlaywrightDispatcher } from './dispatchers/playwrightDispatcher';
 import { PlaywrightServer, PlaywrightServerDelegate } from './remote/playwrightServer';
-import { BrowserContext } from './server/browserContext';
-import { CRBrowser } from './server/chromium/crBrowser';
+import { BrowserContext } from './node/server/browserContext';
+import { CRBrowser } from './node/server/chromium/crBrowser';
 import { CDPSessionDispatcher } from './dispatchers/cdpSessionDispatcher';
 import { PageDispatcher } from './dispatchers/pageDispatcher';
 

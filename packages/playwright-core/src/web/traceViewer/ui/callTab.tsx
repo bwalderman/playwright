@@ -16,7 +16,7 @@
 
 import * as React from 'react';
 import './callTab.css';
-import type { ActionTraceEvent } from '../../../server/trace/common/traceEvents';
+import type { ActionTraceEvent } from '../../../node/server/trace/common/traceEvents';
 import { CallMetadata } from '../../../protocol/callMetadata';
 import { parseSerializedValue } from '../../../protocol/serializers';
 import { msToString } from '../../uiUtils';

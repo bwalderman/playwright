@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { ResourceSnapshot } from '../../../server/trace/common/snapshotTypes';
-import { ActionTraceEvent } from '../../../server/trace/common/traceEvents';
+import { ResourceSnapshot } from '../../../node/server/trace/common/snapshotTypes';
+import { ActionTraceEvent } from '../../../node/server/trace/common/traceEvents';
 import { ContextEntry } from '../entries';
 
 const contextSymbol = Symbol('context');

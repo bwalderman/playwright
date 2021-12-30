@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import * as js from '../server/javascript';
+import * as js from '../node/server/javascript';
 import * as channels from '../protocol/channels';
 import { Dispatcher, DispatcherScope } from './dispatcher';
 import { ElementHandleDispatcher } from './elementHandlerDispatcher';

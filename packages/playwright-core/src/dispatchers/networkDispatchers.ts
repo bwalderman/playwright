@@ -15,9 +15,9 @@
  */
 
 import * as channels from '../protocol/channels';
-import { APIRequestContext } from '../server/fetch';
-import { CallMetadata } from '../server/instrumentation';
-import { Request, Response, Route, WebSocket } from '../server/network';
+import { APIRequestContext } from '../node/server/fetch';
+import { CallMetadata } from '../node/server/instrumentation';
+import { Request, Response, Route, WebSocket } from '../node/server/network';
 import { Dispatcher, DispatcherScope, existingDispatcher, lookupNullableDispatcher } from './dispatcher';
 import { FrameDispatcher } from './frameDispatcher';
 

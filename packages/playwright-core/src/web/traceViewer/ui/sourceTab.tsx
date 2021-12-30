@@ -21,7 +21,7 @@ import '../../../third_party/highlightjs/highlightjs/tomorrow.css';
 import { Source as SourceView } from '../../components/source';
 import { StackTraceView } from './stackTrace';
 import { SplitView } from '../../components/splitView';
-import { ActionTraceEvent } from '../../../server/trace/common/traceEvents';
+import { ActionTraceEvent } from '../../../node/server/trace/common/traceEvents';
 import { StackFrame } from '../../../protocol/channels';
 
 type StackInfo = string | {

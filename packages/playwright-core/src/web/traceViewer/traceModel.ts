@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import * as trace from '../../server/trace/common/traceEvents';
+import * as trace from '../../node/server/trace/common/traceEvents';
 import { BaseSnapshotStorage } from './snapshotStorage';
 
 import type zip from '@zip.js/zip.js';

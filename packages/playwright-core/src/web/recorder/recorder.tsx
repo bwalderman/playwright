@@ -19,7 +19,7 @@ import * as React from 'react';
 import { Toolbar } from '../components/toolbar';
 import { ToolbarButton } from '../components/toolbarButton';
 import { Source as SourceView } from '../components/source';
-import type { CallLog, Mode, Source } from '../../server/supplements/recorder/recorderTypes';
+import type { CallLog, Mode, Source } from '../../node/server/supplements/recorder/recorderTypes';
 import { SplitView } from '../components/splitView';
 import { CallLogView } from './callLog';
 
