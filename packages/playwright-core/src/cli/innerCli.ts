@@ -22,7 +22,7 @@ import path from 'path';
 import { program, Command } from 'commander';
 import { runDriver, runServer, printApiJson, launchBrowserServer } from './driver';
 import { showTraceViewer } from '../server/trace/viewer/traceViewer';
-import * as playwright from '..';
+import * as playwright from '../node';
 import { BrowserContext } from '../client/browserContext';
 import { Browser } from '../client/browser';
 import { Page } from '../client/page';

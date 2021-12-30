@@ -20,7 +20,7 @@ import path from 'path';
 import net from 'net';
 
 import { contextTest, expect } from './config/browserTest';
-import { PlaywrightClient } from '../packages/playwright-core/lib/remote/playwrightClient';
+import { PlaywrightClient } from '../packages/playwright-core/lib/cjs/remote/playwrightClient';
 import type { Page } from 'playwright-core';
 
 class OutOfProcessPlaywrightServer {
@@ -28,7 +28,8 @@ class OutOfProcessPlaywrightServer {
   private _receivedPortPromise: Promise<string>;
 
   constructor(port: number, proxyPort: number) {
-    this._driverProcess = childProcess.fork(path.join(__dirname, '..', 'packages', 'playwright-core', 'lib', 'cli', 'cli.js'), ['run-server', port.toString()], {
+
+    this._driverProcess = childProcess.fork(path.join(__dirname, '..', 'packages', 'playwright-core', 'lib', 'cjs', 'cli', 'cli.js'), ['run-server', port.toString()], {
       stdio: 'pipe',
       detached: true,
       env: {

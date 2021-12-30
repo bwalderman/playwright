@@ -14,5 +14,5 @@
  * limitations under the License.
  */
 
-require('./lib/utils/verifyNodeJsVersion');
-module.exports = require('./lib/cjs');
+const playwright = require('./lib/cjs/node');
+module.exports = playwright.default;

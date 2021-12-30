@@ -15,7 +15,7 @@
  */
 
 import { test, expect, stripAscii } from './playwright-test-fixtures';
-import { ZipFileSystem } from '../../packages/playwright-core/lib/utils/vfs';
+import { ZipFileSystem } from '../../packages/playwright-core/lib/cjs/utils/vfs';
 import fs from 'fs';
 
 test('should stop tracing with trace: on-first-retry, when not retrying', async ({ runInlineTest }, testInfo) => {

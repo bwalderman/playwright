@@ -60,7 +60,7 @@ async function launchDockerGridAgent(agentId: string, gridURL: string): Promise<
     ].join('\n'), 1));
   }
 
-  const imageName = process.env.PWTEST_IMAGE_NAME ?? `mcr.microsoft.com/playwright:v${require('../../package.json').version}-focal`;
+  const imageName = process.env.PWTEST_IMAGE_NAME ?? `mcr.microsoft.com/playwright:v${require('../../../package.json').version}-focal`;
   const pwImage = images.find(image => image.RepoTags?.includes(imageName));
 
   if (!pwImage) {

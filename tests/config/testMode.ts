@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { GridClient } from '../../packages/playwright-core/lib/grid/gridClient';
-import { start } from '../../packages/playwright-core/lib/outofprocess';
-import { Playwright } from '../../packages/playwright-core/lib/client/playwright';
+import { GridClient } from '../../packages/playwright-core/lib/cjs/grid/gridClient';
+import { start } from '../../packages/playwright-core/lib/cjs/outofprocess';
+import { Playwright } from '../../packages/playwright-core/lib/cjs/client/playwright';
 
 export type TestModeName = 'default' | 'driver' | 'service';
 

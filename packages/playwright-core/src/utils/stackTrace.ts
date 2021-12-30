@@ -30,10 +30,10 @@ export function rewriteErrorMessage<E extends Error>(e: E, newMessage: string): 
   return e;
 }
 
-const CORE_DIR = path.resolve(__dirname, '..', '..');
-const CLIENT_LIB = path.join(CORE_DIR, 'lib', 'client');
+const CORE_DIR = path.resolve(__dirname, '..', '..', '..');
+const CLIENT_LIB = path.join(CORE_DIR, 'lib', 'cjs', 'client');
 const CLIENT_SRC = path.join(CORE_DIR, 'src', 'client');
-const UTIL_LIB = path.join(CORE_DIR, 'lib', 'util');
+const UTIL_LIB = path.join(CORE_DIR, 'lib', 'cjs', 'util');
 const UTIL_SRC = path.join(CORE_DIR, 'src', 'util');
 const TEST_DIR_SRC = path.resolve(CORE_DIR, '..', 'playwright-test');
 const TEST_DIR_LIB = path.resolve(CORE_DIR, '..', '@playwright', 'test');

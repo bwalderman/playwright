@@ -222,8 +222,8 @@ onChanges.push({
     'packages/playwright-core/src/server/chromium/protocol.d.ts',
   ],
   mustExist: [
-    'packages/playwright-core/lib/server/deviceDescriptors.js',
-    'packages/playwright-core/lib/server/deviceDescriptorsSource.json',
+    'packages/playwright-core/lib/cjs/server/deviceDescriptors.js',
+    'packages/playwright-core/lib/cjs/server/deviceDescriptorsSource.json',
   ],
   script: 'utils/generate_types/index.js',
 });

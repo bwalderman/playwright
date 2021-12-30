@@ -450,7 +450,7 @@ export function getUserAgent() {
 }
 
 export function getPlaywrightVersion(majorMinorOnly = false) {
-  const packageJson = require('./../../package.json');
+  const packageJson = require('../../../package.json');
   return majorMinorOnly ? packageJson.version.split('.').slice(0, 2).join('.') : packageJson.version;
 }
 

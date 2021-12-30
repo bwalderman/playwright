@@ -361,7 +361,7 @@ export class HarTracer {
       version: '1.2',
       creator: {
         name: 'Playwright',
-        version: require('../../../../package.json')['version'],
+        version: require('../../../../../package.json')['version'],
       },
       browser: {
         name: this._context._browser.options.name,

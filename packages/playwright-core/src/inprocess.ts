@@ -16,4 +16,4 @@
 
 import { createInProcessPlaywright } from './inProcessFactory';
 
-module.exports = createInProcessPlaywright();
+export default createInProcessPlaywright();

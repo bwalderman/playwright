@@ -14,12 +14,12 @@
     "name": "Microsoft Corporation"
   },
   "license": "Apache-2.0",
-  "main": "lib/cjs/index.js",
+  "main": "./index.js",
   "module": "lib/esm/index.js",
   "exports": {
     ".": {
       "node": {
-        "import": "./index.mjs",
+        "import": "./lib/esm/index.js",
         "require": "./index.js"
       },
       "default": {

@@ -42,7 +42,7 @@ export async function showTraceViewer(traceUrl: string, browserName: string, hea
         return false;
       }
     }
-    const absolutePath = path.join(__dirname, '..', '..', '..', 'webpack', 'traceViewer', ...relativePath.split('/'));
+    const absolutePath = path.join(__dirname, '..', '..', '..', '..', 'webpack', 'traceViewer', ...relativePath.split('/'));
     return server.serveFile(request, response, absolutePath);
   });
 
