@@ -16,7 +16,7 @@
 
 import { EventEmitter } from 'events';
 import { rewriteErrorMessage } from '../utils/stackTrace';
-import { TimeoutError } from '../utils/errors';
+import { TimeoutError } from '../common/utils/errors';
 import { createGuid } from '../utils/utils';
 import * as channels from '../protocol/channels';
 import { ChannelOwner } from './channelOwner';

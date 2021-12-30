@@ -23,7 +23,7 @@ import { ElementHandle } from './elementHandle';
 import { Frame } from './frame';
 import { FilePayload, FrameExpectOptions, Rect, SelectOption, SelectOptionOptions, TimeoutOptions } from './types';
 import { parseResult, serializeArgument } from './jsHandle';
-import { escapeWithQuotes } from '../utils/stringUtils';
+import { escapeWithQuotes } from '../common/utils/stringUtils';
 
 export class Locator implements api.Locator {
   private _frame: Frame;

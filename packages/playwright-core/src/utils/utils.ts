@@ -25,7 +25,7 @@ import https from 'https';
 import { spawn, SpawnOptions } from 'child_process';
 import { getProxyForUrl } from 'proxy-from-env';
 import * as URL from 'url';
-import { getUbuntuVersionSync } from './ubuntuVersion';
+import { getUbuntuVersionSync } from '../node/utils/ubuntuVersion';
 import { NameValue } from '../protocol/channels';
 import ProgressBar from 'progress';
 

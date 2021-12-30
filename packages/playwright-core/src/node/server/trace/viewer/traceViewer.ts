@@ -17,8 +17,8 @@
 import path from 'path';
 import fs from 'fs';
 import * as consoleApiSource from '../../../../generated/consoleApiSource';
-import { HttpServer } from '../../../../utils/httpServer';
-import { findChromiumChannel } from '../../../../utils/registry';
+import { HttpServer } from '../../../utils/httpServer';
+import { findChromiumChannel } from '../../../utils/registry';
 import { isUnderTest } from '../../../../utils/utils';
 import { BrowserContext } from '../../browserContext';
 import { installAppIcon } from '../../chromium/crApp';

@@ -23,7 +23,7 @@ import { rewriteErrorMessage } from '../../../utils/stackTrace';
 import { debugLogger, RecentLogsCollector } from '../../../utils/debugLogger';
 import { ProtocolLogger } from '../types';
 import { helper } from '../helper';
-import { kBrowserClosedError } from '../../../utils/errors';
+import { kBrowserClosedError } from '../../../common/utils/errors';
 import { ProtocolError } from '../common/protocolError';
 
 // WKPlaywright uses this special id to issue Browser.close command which we

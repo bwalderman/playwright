@@ -29,7 +29,7 @@ import { Waiter } from './waiter';
 import * as api from '../../types/types';
 import { HeadersArray, URLMatch } from '../common/types';
 import { urlMatches } from './clientHelper';
-import { MultiMap } from '../utils/multimap';
+import { MultiMap } from '../common/utils/multimap';
 import { APIResponse } from './fetch';
 
 export type NetworkCookie = {

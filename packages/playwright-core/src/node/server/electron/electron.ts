@@ -25,7 +25,7 @@ import * as js from '../javascript';
 import { Page } from '../page';
 import { TimeoutSettings } from '../../../utils/timeoutSettings';
 import { WebSocketTransport } from '../transport';
-import { launchProcess, envArrayToObject } from '../../../utils/processLauncher';
+import { launchProcess, envArrayToObject } from '../../utils/processLauncher';
 import { BrowserContext, validateBrowserContextOptions } from '../browserContext';
 import type { BrowserWindow } from 'electron';
 import { Progress, ProgressController } from '../progress';

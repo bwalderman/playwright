@@ -20,7 +20,7 @@ import { serializeError } from '../../protocol/serializers';
 import { createScheme, Validator, ValidationError } from '../../protocol/validator';
 import { assert, debugAssert, isUnderTest, monotonicTime } from '../../utils/utils';
 import { tOptional } from '../../protocol/validatorPrimitives';
-import { kBrowserOrContextClosedError } from '../../utils/errors';
+import { kBrowserOrContextClosedError } from '../../common/utils/errors';
 import { CallMetadata, SdkObject } from '../server/instrumentation';
 import { rewriteErrorMessage } from '../../utils/stackTrace';
 import type { PlaywrightDispatcher } from './playwrightDispatcher';

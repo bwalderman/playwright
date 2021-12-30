@@ -20,7 +20,7 @@ import * as ws from 'ws';
 import { DispatcherConnection, Root } from '../node/dispatchers/dispatcher';
 import { PlaywrightDispatcher } from '../node/dispatchers/playwrightDispatcher';
 import { createPlaywright, Playwright } from '../node/server/playwright';
-import { gracefullyCloseAll } from '../utils/processLauncher';
+import { gracefullyCloseAll } from '../node/utils/processLauncher';
 
 const debugLog = debug('pw:server');
 

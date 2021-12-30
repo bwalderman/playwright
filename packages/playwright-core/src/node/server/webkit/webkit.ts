@@ -16,7 +16,7 @@
  */
 
 import { WKBrowser } from './wkBrowser';
-import { Env } from '../../../utils/processLauncher';
+import { Env } from '../../utils/processLauncher';
 import path from 'path';
 import { kBrowserCloseMessageId } from './wkConnection';
 import { BrowserType } from '../browserType';

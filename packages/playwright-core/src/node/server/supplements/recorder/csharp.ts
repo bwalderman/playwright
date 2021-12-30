@@ -19,7 +19,7 @@ import { LanguageGenerator, LanguageGeneratorOptions, sanitizeDeviceOptions, toS
 import { ActionInContext } from './codeGenerator';
 import { actionTitle, Action } from './recorderActions';
 import { MouseClickOptions, toModifiers } from './utils';
-import { escapeWithQuotes } from '../../../../utils/stringUtils';
+import { escapeWithQuotes } from '../../../../common/utils/stringUtils';
 import deviceDescriptors from '../../deviceDescriptors';
 
 export class CSharpLanguageGenerator implements LanguageGenerator {

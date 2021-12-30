@@ -21,7 +21,7 @@ import { Action, actionTitle } from './recorderActions';
 import { MouseClickOptions, toModifiers } from './utils';
 import deviceDescriptors from '../../deviceDescriptors';
 import { JavaScriptFormatter } from './javascript';
-import { escapeWithQuotes } from '../../../../utils/stringUtils';
+import { escapeWithQuotes } from '../../../../common/utils/stringUtils';
 
 export class JavaLanguageGenerator implements LanguageGenerator {
   id = 'java';

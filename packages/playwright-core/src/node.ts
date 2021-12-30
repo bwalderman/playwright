@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import './utils/verifyNodeJsVersion';
+import './node/utils/verifyNodeJsVersion';
 import playwright from './inprocess';
 
 export const chromium = playwright.chromium;

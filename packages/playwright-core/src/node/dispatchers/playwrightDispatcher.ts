@@ -20,7 +20,7 @@ import { GlobalAPIRequestContext } from '../server/fetch';
 import { Playwright } from '../server/playwright';
 import * as types from '../server/types';
 import { debugLogger } from '../../utils/debugLogger';
-import { SocksConnection, SocksConnectionClient } from '../../utils/socksProxy';
+import { SocksConnection, SocksConnectionClient } from '../utils/socksProxy';
 import { createGuid } from '../../utils/utils';
 import { AndroidDispatcher } from './androidDispatcher';
 import { BrowserTypeDispatcher } from './browserTypeDispatcher';

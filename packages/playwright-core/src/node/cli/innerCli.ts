@@ -29,7 +29,7 @@ import { Page } from '../../client/page';
 import { BrowserType } from '../../client/browserType';
 import { BrowserContextOptions, LaunchOptions } from '../../client/types';
 import { spawn } from 'child_process';
-import { registry, Executable } from '../../utils/registry';
+import { registry, Executable } from '../utils/registry';
 import { spawnAsync, getPlaywrightVersion } from '../../utils/utils';
 import { launchGridAgent } from '../grid/gridAgent';
 import { GridServer, GridFactory } from '../grid/gridServer';

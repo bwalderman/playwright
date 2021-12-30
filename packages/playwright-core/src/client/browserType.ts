@@ -25,7 +25,7 @@ import { ChildProcess } from 'child_process';
 import { envObjectToArray } from './clientHelper';
 import { assert, headersObjectToArray, monotonicTime } from '../utils/utils';
 import * as api from '../../types/types';
-import { kBrowserClosedError } from '../utils/errors';
+import { kBrowserClosedError } from '../common/utils/errors';
 import { raceAgainstDeadline } from '../utils/async';
 import type { Playwright } from './playwright';
 

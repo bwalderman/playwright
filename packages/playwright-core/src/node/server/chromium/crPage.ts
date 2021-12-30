@@ -40,7 +40,7 @@ import { assert, headersArrayToObject, createGuid } from '../../../utils/utils';
 import { VideoRecorder } from './videoRecorder';
 import { Progress } from '../progress';
 import { DragManager } from './crDragDrop';
-import { registry } from '../../../utils/registry';
+import { registry } from '../../utils/registry';
 
 
 const UTILITY_WORLD_NAME = '__playwright_utility_world__';

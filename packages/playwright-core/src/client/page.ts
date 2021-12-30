@@ -44,7 +44,7 @@ import path from 'path';
 import { Size, URLMatch, Headers, LifecycleEvent, WaitForEventOptions, SelectOption, SelectOptionOptions, FilePayload, WaitForFunctionOptions } from './types';
 import { evaluationScript, urlMatches } from './clientHelper';
 import { isString, isRegExp, isObject, mkdirIfNeeded, headersObjectToArray } from '../utils/utils';
-import { isSafeCloseError } from '../utils/errors';
+import { isSafeCloseError } from '../common/utils/errors';
 import { Video } from './video';
 import { Artifact } from './artifact';
 import { APIRequestContext } from './fetch';

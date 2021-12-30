@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import { kBrowserClosedError } from '../../../utils/errors';
+import { kBrowserClosedError } from '../../../common/utils/errors';
 import { assert } from '../../../utils/utils';
 import { Browser, BrowserOptions } from '../browser';
 import { assertBrowserContextIsNotOwned, BrowserContext, validateBrowserContextOptions, verifyGeolocation } from '../browserContext';

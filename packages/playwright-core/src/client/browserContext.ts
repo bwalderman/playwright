@@ -29,7 +29,7 @@ import { TimeoutSettings } from '../utils/timeoutSettings';
 import { Waiter } from './waiter';
 import { URLMatch, Headers, WaitForEventOptions, BrowserContextOptions, StorageState, LaunchOptions } from './types';
 import { isUnderTest, headersObjectToArray, mkdirIfNeeded } from '../utils/utils';
-import { isSafeCloseError } from '../utils/errors';
+import { isSafeCloseError } from '../common/utils/errors';
 import * as api from '../../types/types';
 import * as structs from '../../types/structs';
 import { CDPSession } from './cdpSession';

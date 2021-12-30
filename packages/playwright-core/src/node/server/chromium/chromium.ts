@@ -19,7 +19,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import { CRBrowser } from './crBrowser';
-import { Env, gracefullyCloseSet } from '../../../utils/processLauncher';
+import { Env, gracefullyCloseSet } from '../../utils/processLauncher';
 import { kBrowserCloseMessageId } from './crConnection';
 import { rewriteErrorMessage } from '../../../utils/stackTrace';
 import { BrowserType } from '../browserType';
@@ -35,7 +35,7 @@ import { helper } from '../helper';
 import { CallMetadata } from '../instrumentation';
 import http from 'http';
 import https from 'https';
-import { registry } from '../../../utils/registry';
+import { registry } from '../../utils/registry';
 import { ManualPromise } from '../../../utils/async';
 
 const ARTIFACTS_FOLDER = path.join(os.tmpdir(), 'playwright-artifacts-');

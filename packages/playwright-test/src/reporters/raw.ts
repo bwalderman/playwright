@@ -21,7 +21,7 @@ import { assert, calculateSha1 } from 'playwright-core/lib/utils/utils';
 import { sanitizeForFilePath } from '../util';
 import { formatResultFailure } from './base';
 import { toPosixPath, serializePatterns } from './json';
-import { MultiMap } from 'playwright-core/lib/utils/multimap';
+import { MultiMap } from 'playwright-core/src/common/utils/multimap';
 import { codeFrameColumns } from '@babel/code-frame';
 
 export type JsonLocation = Location;

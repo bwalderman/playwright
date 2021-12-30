@@ -21,9 +21,9 @@ import * as util from 'util';
 import * as fs from 'fs';
 import lockfile from 'proper-lockfile';
 import { getUbuntuVersion } from './ubuntuVersion';
-import { getFromENV, getAsBooleanFromENV, calculateSha1, removeFolders, existsAsync, hostPlatform, canAccessFile, spawnAsync, fetchData, wrapInASCIIBox, transformCommandsForRoot } from './utils';
+import { getFromENV, getAsBooleanFromENV, calculateSha1, removeFolders, existsAsync, hostPlatform, canAccessFile, spawnAsync, fetchData, wrapInASCIIBox, transformCommandsForRoot } from '../../utils/utils';
 import { DependencyGroup, installDependenciesLinux, installDependenciesWindows, validateDependenciesLinux, validateDependenciesWindows } from './dependencies';
-import { downloadBrowserWithProgressBar, logPolitely } from '../node/utils/browserFetcher';
+import { downloadBrowserWithProgressBar, logPolitely } from './browserFetcher';
 
 const PACKAGE_PATH = path.join(__dirname, '..', '..');
 const BIN_PATH = path.join(__dirname, '..', '..', 'bin');

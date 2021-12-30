@@ -20,7 +20,7 @@ import stream from 'stream';
 import { monotonicTime } from './util';
 import { raceAgainstDeadline } from 'playwright-core/lib/utils/async';
 import { WebServerConfig } from './types';
-import { launchProcess } from 'playwright-core/lib/utils/processLauncher';
+import { launchProcess } from 'playwright-core/src/node/utils/processLauncher';
 
 const DEFAULT_ENVIRONMENT_VARIABLES = {
   'BROWSER': 'none', // Disable that create-react-app will open the page in the browser

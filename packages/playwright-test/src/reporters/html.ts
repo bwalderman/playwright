@@ -20,7 +20,7 @@ import open from 'open';
 import path from 'path';
 import { Transform, TransformCallback } from 'stream';
 import { FullConfig, Suite, Reporter } from '../../types/testReporter';
-import { HttpServer } from 'playwright-core/lib/utils/httpServer';
+import { HttpServer } from 'playwright-core/src/node/utils/httpServer';
 import { calculateSha1, removeFolders } from 'playwright-core/lib/utils/utils';
 import RawReporter, { JsonReport, JsonSuite, JsonTestCase, JsonTestResult, JsonTestStep } from './raw';
 import assert from 'assert';

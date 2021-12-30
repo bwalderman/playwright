@@ -20,7 +20,7 @@ import { ActionInContext } from './codeGenerator';
 import { Action, actionTitle } from './recorderActions';
 import { MouseClickOptions, toModifiers } from './utils';
 import deviceDescriptors from '../../deviceDescriptors';
-import { escapeWithQuotes } from '../../../../utils/stringUtils';
+import { escapeWithQuotes } from '../../../../common/utils/stringUtils';
 
 export class JavaScriptLanguageGenerator implements LanguageGenerator {
   id: string;
