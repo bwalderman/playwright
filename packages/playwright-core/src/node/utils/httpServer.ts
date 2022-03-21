@@ -19,7 +19,7 @@ import fs from 'fs';
 import path from 'path';
 import { Server as WebSocketServer } from 'ws';
 import * as mime from 'mime';
-import { assert } from '../../utils/utils';
+import { assert } from '../../node/utils/utils';
 import { VirtualFileSystem } from './vfs';
 
 export type ServerRouteHandler = (request: http.IncomingMessage, response: http.ServerResponse) => boolean;

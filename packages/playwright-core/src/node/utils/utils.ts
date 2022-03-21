@@ -25,8 +25,7 @@ import https from 'https';
 import { spawn, SpawnOptions } from 'child_process';
 import { getProxyForUrl } from 'proxy-from-env';
 import * as URL from 'url';
-import { getUbuntuVersionSync } from '../node/utils/ubuntuVersion';
-import { NameValue } from '../protocol/channels';
+import { getUbuntuVersionSync } from './ubuntuVersion';
 import ProgressBar from 'progress';
 
 // `https-proxy-agent` v5 is written in TypeScript and exposes generated types.
@@ -36,7 +35,7 @@ import ProgressBar from 'progress';
 // As a result, we can't depend on the package unless we enable the option
 // for our codebase. Instead of doing this, we abuse "require" to import module
 // without types.
-const ProxyAgent = require('https-proxy-agent');
+import createHttpsProxyAgent from 'https-proxy-agent';
 
 export const existsAsync = (path: string): Promise<boolean> => new Promise(resolve => fs.stat(path, err => resolve(!err)));
 
@@ -67,7 +66,7 @@ function httpRequest(params: HTTPRequestParams, onResponse: (r: http.IncomingMes
       const parsedProxyURL = URL.parse(proxyURL);
       (parsedProxyURL as any).secureProxy = parsedProxyURL.protocol === 'https:';
 
-      options.agent = new ProxyAgent(parsedProxyURL);
+      options.agent = createHttpsProxyAgent(parsedProxyURL);
       options.rejectUnauthorized = false;
     }
   }
@@ -281,45 +280,11 @@ export function makeWaitForNextTask() {
   };
 }
 
-export function assert(value: any, message?: string): asserts value {
-  if (!value)
-    throw new Error(message || 'Assertion error');
-}
-
-export function debugAssert(value: any, message?: string): asserts value {
-  if (isUnderTest() && !value)
-    throw new Error(message);
-}
-
-export function isString(obj: any): obj is string {
-  return typeof obj === 'string' || obj instanceof String;
-}
-
-export function isRegExp(obj: any): obj is RegExp {
-  return obj instanceof RegExp || Object.prototype.toString.call(obj) === '[object RegExp]';
-}
-
-export function isObject(obj: any): obj is NonNullable<object> {
-  return typeof obj === 'object' && obj !== null;
-}
-
-export function isError(obj: any): obj is Error {
-  return obj instanceof Error || (obj && obj.__proto__ && obj.__proto__.name === 'Error');
-}
-
 const debugEnv = getFromENV('PWDEBUG') || '';
 export function debugMode() {
   if (debugEnv === 'console')
     return 'console';
   return debugEnv ? 'inspector' : '';
-}
-
-let _isUnderTest = false;
-export function setUnderTest() {
-  _isUnderTest = true;
-}
-export function isUnderTest(): boolean {
-  return _isUnderTest;
 }
 
 export function getFromENV(name: string): string | undefined {
@@ -339,33 +304,6 @@ export async function mkdirIfNeeded(filePath: string) {
   await fs.promises.mkdir(path.dirname(filePath), { recursive: true }).catch(() => {});
 }
 
-type HeadersArray = { name: string, value: string }[];
-type HeadersObject = { [key: string]: string };
-
-export function headersObjectToArray(headers: HeadersObject, separator?: string, setCookieSeparator?: string): HeadersArray {
-  if (!setCookieSeparator)
-    setCookieSeparator = separator;
-  const result: HeadersArray = [];
-  for (const name in headers) {
-    const values = headers[name];
-    if (separator) {
-      const sep = name.toLowerCase() === 'set-cookie' ? setCookieSeparator : separator;
-      for (const value of values.split(sep!))
-        result.push({ name, value: value.trim() });
-    } else {
-      result.push({ name, value: values });
-    }
-  }
-  return result;
-}
-
-export function headersArrayToObject(headers: HeadersArray, lowerCase: boolean): HeadersObject {
-  const result: HeadersObject = {};
-  for (const { name, value } of headers)
-    result[lowerCase ? name.toLowerCase() : name] = value;
-  return result;
-}
-
 export function monotonicTime(): number {
   const [seconds, nanoseconds] = process.hrtime();
   return seconds * 1000 + (nanoseconds / 1000 | 0) / 1000;
@@ -382,24 +320,6 @@ class HashStream extends stream.Writable {
   digest(): string {
     return this._hash.digest('hex');
   }
-}
-
-export function objectToArray(map?:  { [key: string]: any }): NameValue[] | undefined {
-  if (!map)
-    return undefined;
-  const result = [];
-  for (const [name, value] of Object.entries(map))
-    result.push({ name, value: String(value) });
-  return result;
-}
-
-export function arrayToObject(array?: NameValue[]): { [key: string]: string } | undefined {
-  if (!array)
-    return undefined;
-  const result: { [key: string]: string } = {};
-  for (const { name, value } of array)
-    result[name] = value;
-  return result;
 }
 
 export async function calculateFileSha1(filename: string): Promise<string> {
@@ -452,14 +372,6 @@ export function getUserAgent() {
 export function getPlaywrightVersion(majorMinorOnly = false) {
   const packageJson = require('../../../package.json');
   return majorMinorOnly ? packageJson.version.split('.').slice(0, 2).join('.') : packageJson.version;
-}
-
-export function constructURLBasedOnBaseURL(baseURL: string | undefined, givenURL: string): string {
-  try {
-    return (new URL.URL(givenURL, baseURL)).toString();
-  } catch (e) {
-    return givenURL;
-  }
 }
 
 export type HostPlatform = 'win64'|'mac10.13'|'mac10.14'|'mac10.15'|'mac11'|'mac11-arm64'|'ubuntu18.04'|'ubuntu20.04'|'ubuntu18.04-arm64'|'ubuntu20.04-arm64';
