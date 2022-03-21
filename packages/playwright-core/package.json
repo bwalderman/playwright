@@ -18,6 +18,8 @@
     },
     "./cli": "./cli.js",
     "./package.json": "./package.json",
+    "./lib/client/connection": "./lib/client/connection.js",
+    "./lib/client/playwright": "./lib/client/playwright.js",
     "./lib/grid/gridServer": "./lib/grid/gridServer.js",
     "./lib/grid/gridClient": "./lib/grid/gridClient.js",
     "./lib/grid/dockerGridFactory": "./lib/grid/dockerGridFactory.js",
