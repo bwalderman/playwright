@@ -13,4 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { PlaywrightClient } from './playwrightClient'
+import { PlaywrightClient } from './playwrightClient'
+
+window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('connect').addEventListener('click', async () => {
+        const client = await PlaywrightClient.connect({ wsEndpoint: `ws://localhost:9223` });
+        const playwright = client.playwright();
+        const browser = await playwright.chromium.launch({ headless: false });
+        const page = await browser.newPage();
+        await page.goto('https://bing.com');
+        const title = await page.title();
+        console.log(title);
+        await browser.close();
+        await client.close();
+    });
+});

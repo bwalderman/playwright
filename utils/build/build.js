@@ -197,7 +197,7 @@ for (const pkg of workspace.packages()) {
     command: 'npx',
     args: [
       'babel',
-      ...(watchMode ? ['-w', '--source-maps'] : []),
+      ...(watchMode ? ['-w', '--source-maps'] : ['--source-maps']),
       '--extensions', '.ts',
       '--out-dir', quotePath(path.join(pkg.path, 'lib')),
       '--ignore', '"packages/playwright-core/src/server/injected/**/*"',
