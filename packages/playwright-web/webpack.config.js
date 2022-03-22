@@ -7,17 +7,21 @@ const config = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: 'bundle.js'
+    filename: 'index.js'
   },
   module: {
     rules: [
+      // {
+      //   test: /\.(j|t)sx?$/,
+      //   use: 'ts-loader',
+      //   exclude: /node_modules/
+      // }
       {
         test: /\.(j|t)sx?$/,
         loader: 'babel-loader',
         options: {
           presets: [
             "@babel/preset-typescript",
-            "@babel/preset-react"
           ]
         },
         exclude: /node_modules/
@@ -32,26 +36,24 @@ const config = {
       '.js'
     ],
     fallback: {
-      "fs": false,
-      os: "os-browserify/browser",
-      "dns": false,
-      "child_process": false,
-      "http": false,
-      "https": false,
-      "crypto": false,
-      stream: "stream-browserify",
-      _stream_duplex: "readable-stream/duplex",
-      _stream_passthrough: "readable-stream/passthrough",
-      _stream_readable: "readable-stream/readable",
-      _stream_transform: "readable-stream/transform",
-      _stream_writable: "readable-stream/writable",
-      path: "path-browserify",
-      util: "util",
-      buffer: require.resolve('buffer/'),
-      "net": false,
-      "module": false,
-      "assert": false,
-      "tls": false,
+      'fs': false,
+      'os': require.resolve('os-browserify/browser'),
+      'dns': false,
+      'child_process': false,
+      'http': false,
+      'https': false,
+      'crypto': false,
+      'stream': require.resolve('stream-browserify'),
+      'path': require.resolve('path-browserify'),
+      'util': require.resolve('util'),
+      'url': require.resolve('url'),
+      'buffer': require.resolve('buffer'),
+      'net': false,
+      'module': false,
+      'assert': false,
+      'tls': false,
+      'zlib': require.resolve('browserify-zlib'),
+      'inspector': false,
     },
   },
   plugins: [

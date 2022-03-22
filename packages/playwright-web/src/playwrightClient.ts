@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Connection } from 'playwright-core/src/client/connection';
-import { Playwright } from 'playwright-core/src/client/playwright';
-import { makeWaitForNextTask } from 'playwright-core/src/utils/utils';
+import { Connection } from 'playwright-core/lib/client/connection';
+import { Playwright } from 'playwright-core/lib/client/playwright';
+import { makeWaitForNextTask } from 'playwright-core/lib/utils/utils';
 
 type PlaywrightClientConnectOptions = {
     wsEndpoint: string;
