@@ -1,14 +1,20 @@
 // @ts-check
 const webpack = require('webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 /** @type{import('webpack').Configuration} */
 const config = {
   entry: './src/index.ts',
+  experiments: {
+    outputModule: true,
+  },
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: 'index.js',
+    filename: 'playwright.js',
+    library: {
+      type: 'module'
+    }
   },
   module: {
     rules: [
@@ -72,9 +78,9 @@ const config = {
         electron: 16, // Force makeWaitForNextTask to use setTimeout
       })
     }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "index.html")
-    })
+    // new HtmlWebpackPlugin({
+    //   template: path.join(__dirname, "src", "index.html")
+    // })
   ],
   stats: { warnings: false },
   // @ts-ignore
