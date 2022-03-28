@@ -83,6 +83,9 @@ class PlaywrightExample
 }
 ```
 
+## property: Playwright.host
+- type: <[Host]>
+
 ## property: Playwright.chromium
 - type: <[BrowserType]>
 

@@ -11019,6 +11019,18 @@ export type AndroidKey =
 export const _electron: Electron;
 export const _android: Android;
 
+// interface HostCDPChannel {
+//   send(message: object): void;
+//   on(event: 'message', listener: (message: object) => void): this;
+// }
+
+// interface Host {
+//   initialize(channel: HostCDPChannel): Promise<void>;
+//   connect(): Promise<Browser>;
+// }
+
+// export const host: Host;
+
 // This is required to not export everything by default. See https://github.com/Microsoft/TypeScript/issues/19545#issuecomment-340490459
 export {};
 
@@ -13853,6 +13865,70 @@ export interface FrameLocator {
 }
 
 /**
+ * Page provides methods to interact with a single tab in a [Browser], or an
+ * [extension background page](https://developer.chrome.com/extensions/background_pages) in Chromium. One [Browser]
+ * instance might have multiple [Page] instances.
+ *
+ * This example creates a page, navigates it to a URL, and then saves a screenshot:
+ *
+ * ```js
+ * a
+ * ```
+ *
+ */
+export interface Host {
+  /**
+   * This methods attaches Playwright to an existing browser instance using the Chrome DevTools Protocol.
+   *
+   * The default browser context is accessible via
+   * [browser.contexts()](https://playwright.dev/docs/api/class-browser#browser-contexts).
+   *
+   * > NOTE: Connecting over the Chrome DevTools Protocol is only supported for Chromium-based browsers.
+   * @param channel URL to navigate page to. The url should include scheme, e.g. `https://`. When a `baseURL` via the context options was provided and the passed URL is a path, it gets merged via the
+   * [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor.
+   */
+  initialize(channel: HostCDPChannel): Promise<void>;
+
+  /**
+   * This methods attaches Playwright to an existing browser instance using the Chrome DevTools Protocol.
+   *
+   * The default browser context is accessible via
+   * [browser.contexts()](https://playwright.dev/docs/api/class-browser#browser-contexts).
+   *
+   * > NOTE: Connecting over the Chrome DevTools Protocol is only supported for Chromium-based browsers.
+   */
+  connect(): Promise<Browser>;
+}
+
+/**
+ * - extends: [EventEmitter]
+ *
+ * Page provides methods to interact with a single tab in a [Browser], or an
+ * [extension background page](https://developer.chrome.com/extensions/background_pages) in Chromium. One [Browser]
+ * instance might have multiple [Page] instances.
+ *
+ * This example creates a page, navigates it to a URL, and then saves a screenshot:
+ *
+ * ```js
+ * a
+ * ```
+ *
+ */
+export interface HostCDPChannel extends EventEmitter {
+  /**
+   * This methods attaches Playwright to an existing browser instance using the Chrome DevTools Protocol.
+   *
+   * The default browser context is accessible via
+   * [browser.contexts()](https://playwright.dev/docs/api/class-browser#browser-contexts).
+   *
+   * > NOTE: Connecting over the Chrome DevTools Protocol is only supported for Chromium-based browsers.
+   * @param message URL to navigate page to. The url should include scheme, e.g. `https://`. When a `baseURL` via the context options was provided and the passed URL is a path, it gets merged via the
+   * [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor.
+   */
+  send(message: Object): Promise<Browser>;
+}
+
+/**
  * Keyboard provides an api for managing a virtual keyboard. The high level api is
  * [keyboard.type(text[, options])](https://playwright.dev/docs/api/class-keyboard#keyboard-type), which takes raw
  * characters and generates proper keydown, keypress/input, and keyup events on your page.
@@ -14172,6 +14248,8 @@ export interface Mouse {
    */
   wheel(deltaX: number, deltaY: number): Promise<void>;
 }
+
+export const host: Host;
 
 /**
  * This object can be used to launch or connect to Chromium, returning instances of [Browser].

@@ -54,6 +54,8 @@ export type InitializerTraits<T> =
     T extends SocksSupportChannel ? SocksSupportInitializer :
     T extends PlaywrightChannel ? PlaywrightInitializer :
     T extends RootChannel ? RootInitializer :
+    T extends HostChannel ? HostInitializer :
+    T extends HostCDPChannelChannel ? HostCDPChannelInitializer :
     T extends LocalUtilsChannel ? LocalUtilsInitializer :
     T extends APIRequestContextChannel ? APIRequestContextInitializer :
     object;
@@ -91,6 +93,8 @@ export type EventsTraits<T> =
     T extends SocksSupportChannel ? SocksSupportEvents :
     T extends PlaywrightChannel ? PlaywrightEvents :
     T extends RootChannel ? RootEvents :
+    T extends HostChannel ? HostEvents :
+    T extends HostCDPChannelChannel ? HostCDPChannelEvents :
     T extends LocalUtilsChannel ? LocalUtilsEvents :
     T extends APIRequestContextChannel ? APIRequestContextEvents :
     undefined;
@@ -128,6 +132,8 @@ export type EventTargetTraits<T> =
     T extends SocksSupportChannel ? SocksSupportEventTarget :
     T extends PlaywrightChannel ? PlaywrightEventTarget :
     T extends RootChannel ? RootEventTarget :
+    T extends HostChannel ? HostEventTarget :
+    T extends HostCDPChannelChannel ? HostCDPChannelEventTarget :
     T extends LocalUtilsChannel ? LocalUtilsEventTarget :
     T extends APIRequestContextChannel ? APIRequestContextEventTarget :
     undefined;
@@ -380,6 +386,60 @@ export type LocalUtilsZipResult = void;
 export interface LocalUtilsEvents {
 }
 
+// ----------- HostCDPChannel -----------
+export type HostCDPChannelInitializer = {};
+export interface HostCDPChannelEventTarget {
+  on(event: 'messageReceived', callback: (params: HostCDPChannelMessageReceivedEvent) => void): this;
+}
+export interface HostCDPChannelChannel extends HostCDPChannelEventTarget, Channel {
+  _type_HostCDPChannel: boolean;
+  sendMessage(params: HostCDPChannelSendMessageParams, metadata?: Metadata): Promise<HostCDPChannelSendMessageResult>;
+}
+export type HostCDPChannelMessageReceivedEvent = {
+  message: any,
+};
+export type HostCDPChannelSendMessageParams = {
+  message: any,
+};
+export type HostCDPChannelSendMessageOptions = {
+
+};
+export type HostCDPChannelSendMessageResult = void;
+
+export interface HostCDPChannelEvents {
+  'messageReceived': HostCDPChannelMessageReceivedEvent;
+}
+
+// ----------- Host -----------
+export type HostInitializer = {};
+export interface HostEventTarget {
+}
+export interface HostChannel extends HostEventTarget, Channel {
+  _type_Host: boolean;
+  initialize(params?: HostInitializeParams, metadata?: Metadata): Promise<HostInitializeResult>;
+  connect(params: HostConnectParams, metadata?: Metadata): Promise<HostConnectResult>;
+}
+export type HostInitializeParams = {};
+export type HostInitializeOptions = {};
+export type HostInitializeResult = {
+  channel: HostCDPChannelChannel,
+};
+export type HostConnectParams = {
+  slowMo?: number,
+  timeout?: number,
+};
+export type HostConnectOptions = {
+  slowMo?: number,
+  timeout?: number,
+};
+export type HostConnectResult = {
+  browser: BrowserChannel,
+  defaultContext?: BrowserContextChannel,
+};
+
+export interface HostEvents {
+}
+
 // ----------- Root -----------
 export type RootInitializer = {};
 export interface RootEventTarget {
@@ -408,6 +468,7 @@ export type PlaywrightInitializer = {
   webkit: BrowserTypeChannel,
   android: AndroidChannel,
   electron: ElectronChannel,
+  host: HostChannel,
   utils: LocalUtilsChannel,
   deviceDescriptors: {
     name: string,

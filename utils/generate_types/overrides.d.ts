@@ -346,5 +346,17 @@ export type AndroidKey =
 export const _electron: Electron;
 export const _android: Android;
 
+// interface HostCDPChannel {
+//   send(message: object): void;
+//   on(event: 'message', listener: (message: object) => void): this;
+// }
+
+// interface Host {
+//   initialize(channel: HostCDPChannel): Promise<void>;
+//   connect(): Promise<Browser>;
+// }
+
+// export const host: Host;
+
 // This is required to not export everything by default. See https://github.com/Microsoft/TypeScript/issues/19545#issuecomment-340490459
 export {};
