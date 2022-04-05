@@ -456,35 +456,6 @@ LocalUtils:
           type: array
           items: NameValue
 
-HostCDPTransport:
-  type: interface
-
-  commands:
-
-    sendMessage:
-      parameters:
-        message: json
-
-  events:
-
-    messageReceived:
-      parameters:
-        message: json
-
-Host:
-  type: interface
-
-  commands:
-
-    initialize:
-      returns:
-        transport: HostCDPTransport
-
-    connect:
-      returns:
-        browser: Browser
-        defaultContext: BrowserContext?
-
 Root:
   type: interface
 
@@ -505,7 +476,6 @@ Playwright:
     webkit: BrowserType
     android: Android
     electron: Electron
-    host: Host
     utils: LocalUtils
     deviceDescriptors:
       type: array

@@ -21,7 +21,6 @@ import { Android } from './android';
 import { BrowserType } from './browserType';
 import { ChannelOwner } from './channelOwner';
 import { Electron } from './electron';
-import { Host } from './host';
 import { APIRequest } from './fetch';
 import { LocalUtils } from './localUtils';
 import { Selectors, SelectorsOwner } from './selectors';
@@ -44,7 +43,6 @@ export class Playwright extends ChannelOwner<channels.PlaywrightChannel> {
   readonly firefox: BrowserType;
   readonly webkit: BrowserType;
   readonly devices: Devices;
-  readonly host: Host;
   selectors: Selectors;
   readonly request: APIRequest;
   readonly errors: { TimeoutError: typeof TimeoutError };
@@ -62,8 +60,6 @@ export class Playwright extends ChannelOwner<channels.PlaywrightChannel> {
     this.webkit._playwright = this;
     this._android = Android.from(initializer.android);
     this._electron = Electron.from(initializer.electron);
-    this.host = Host.from(initializer.host);
-    this.host._playwright = this;
     this.devices = {};
     for (const { name, descriptor } of initializer.deviceDescriptors)
       this.devices[name] = descriptor;

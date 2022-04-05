@@ -193,11 +193,6 @@ export function createScheme(tChannel: (name: string) => Validator): Scheme {
     zipFile: tString,
     entries: tArray(tType('NameValue')),
   });
-  scheme.HostCDPTransportSendMessageParams = tObject({
-    message: tAny,
-  });
-  scheme.HostInitializeParams = tOptional(tObject({}));
-  scheme.HostConnectParams = tOptional(tObject({}));
   scheme.RootInitializeParams = tObject({
     sdkLanguage: tString,
   });

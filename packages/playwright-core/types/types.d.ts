@@ -13853,58 +13853,6 @@ export interface FrameLocator {
 }
 
 /**
- * Host provides methods to interact with the hosting browser process when Playwright is running in embedded mode.
- */
-export interface Host {
-  /**
-   * Called once by the embedder to establish a communication channel between Playwright and the embedder.
-   */
-  initialize(): Promise<HostCDPTransport>;
-
-  /**
-   * This methods attaches Playwright to the host browser process using the Chrome DevTools Protocol transport established
-   * with a call to Host.initialize.
-   */
-  connect(): Promise<Browser>;
-}
-
-/**
- * Provides a mechanism for Playwright to communicate with a host browser process when running in embedded mode.
- */
-export interface HostCDPTransport {
-  /**
-   * Emitted by Playwright to send a CDP message to the host browser process.
-   */
-  on(event: 'messagereceived', listener: (object: Object) => void): this;
-
-  /**
-   * Adds an event listener that will be automatically removed after it is triggered once. See `addListener` for more information about this event.
-   */
-  once(event: 'messagereceived', listener: (object: Object) => void): this;
-
-  /**
-   * Emitted by Playwright to send a CDP message to the host browser process.
-   */
-  addListener(event: 'messagereceived', listener: (object: Object) => void): this;
-
-  /**
-   * Removes an event listener added by `on` or `addListener`.
-   */
-  removeListener(event: 'messagereceived', listener: (object: Object) => void): this;
-
-  /**
-   * Removes an event listener added by `on` or `addListener`.
-   */
-  off(event: 'messagereceived', listener: (object: Object) => void): this;
-
-  /**
-   * The host browser process uses this method to send a raw CDP message to Playwright.
-   * @param message The message to send.
-   */
-  sendMessage(message: Object): Promise<void>;
-}
-
-/**
  * Keyboard provides an api for managing a virtual keyboard. The high level api is
  * [keyboard.type(text[, options])](https://playwright.dev/docs/api/class-keyboard#keyboard-type), which takes raw
  * characters and generates proper keydown, keypress/input, and keyup events on your page.
