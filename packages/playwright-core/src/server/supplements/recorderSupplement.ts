@@ -378,6 +378,11 @@ class ContextRecorder extends EventEmitter {
   private async _onPage(page: Page) {
     // First page is called page, others are called popup1, popup2, etc.
     const frame = page.mainFrame();
+
+    if (frame._url.indexOf("devtools") !== -1) {
+      return;
+    }
+
     page.on('close', () => {
       this._generator.addAction({
         frame: this._describeMainFrame(page),
