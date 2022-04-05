@@ -11019,18 +11019,6 @@ export type AndroidKey =
 export const _electron: Electron;
 export const _android: Android;
 
-// interface HostCDPChannel {
-//   send(message: object): void;
-//   on(event: 'message', listener: (message: object) => void): this;
-// }
-
-// interface Host {
-//   initialize(channel: HostCDPChannel): Promise<void>;
-//   connect(): Promise<Browser>;
-// }
-
-// export const host: Host;
-
 // This is required to not export everything by default. See https://github.com/Microsoft/TypeScript/issues/19545#issuecomment-340490459
 export {};
 
@@ -13870,9 +13858,8 @@ export interface FrameLocator {
 export interface Host {
   /**
    * Called once by the embedder to establish a communication channel between Playwright and the embedder.
-   * @param transport A transport object that Playwright can use to connect to the host browser process. The embeding host browser should add an event listen on the transport object to be notified when Playwright sends a CDP request.
    */
-  initialize(transport: HostCDPTransport): Promise<void>;
+  initialize(): Promise<HostCDPTransport>;
 
   /**
    * This methods attaches Playwright to the host browser process using the Chrome DevTools Protocol transport established
@@ -13882,41 +13869,39 @@ export interface Host {
 }
 
 /**
- * - extends: [EventEmitter]
- *
  * Provides a mechanism for Playwright to communicate with a host browser process when running in embedded mode.
  */
-export interface HostCDPTransport extends EventEmitter {
+export interface HostCDPTransport {
   /**
    * Emitted by Playwright to send a CDP message to the host browser process.
    */
-  on(event: 'message', listener: (object: Object) => void): this;
+  on(event: 'messagereceived', listener: (object: Object) => void): this;
 
   /**
    * Adds an event listener that will be automatically removed after it is triggered once. See `addListener` for more information about this event.
    */
-  once(event: 'message', listener: (object: Object) => void): this;
+  once(event: 'messagereceived', listener: (object: Object) => void): this;
 
   /**
    * Emitted by Playwright to send a CDP message to the host browser process.
    */
-  addListener(event: 'message', listener: (object: Object) => void): this;
+  addListener(event: 'messagereceived', listener: (object: Object) => void): this;
 
   /**
    * Removes an event listener added by `on` or `addListener`.
    */
-  removeListener(event: 'message', listener: (object: Object) => void): this;
+  removeListener(event: 'messagereceived', listener: (object: Object) => void): this;
 
   /**
    * Removes an event listener added by `on` or `addListener`.
    */
-  off(event: 'message', listener: (object: Object) => void): this;
+  off(event: 'messagereceived', listener: (object: Object) => void): this;
 
   /**
    * The host browser process uses this method to send a raw CDP message to Playwright.
    * @param message The message to send.
    */
-  send(message: Object): Promise<Browser>;
+  sendMessage(message: Object): Promise<void>;
 }
 
 /**

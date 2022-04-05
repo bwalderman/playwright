@@ -456,7 +456,7 @@ LocalUtils:
           type: array
           items: NameValue
 
-HostCDPChannel:
+HostCDPTransport:
   type: interface
 
   commands:
@@ -478,12 +478,9 @@ Host:
 
     initialize:
       returns:
-        channel: HostCDPChannel
+        transport: HostCDPTransport
 
     connect:
-      parameters:
-        slowMo: number?
-        timeout: number?
       returns:
         browser: Browser
         defaultContext: BrowserContext?

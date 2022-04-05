@@ -55,7 +55,7 @@ export type InitializerTraits<T> =
     T extends PlaywrightChannel ? PlaywrightInitializer :
     T extends RootChannel ? RootInitializer :
     T extends HostChannel ? HostInitializer :
-    T extends HostCDPChannelChannel ? HostCDPChannelInitializer :
+    T extends HostCDPTransportChannel ? HostCDPTransportInitializer :
     T extends LocalUtilsChannel ? LocalUtilsInitializer :
     T extends APIRequestContextChannel ? APIRequestContextInitializer :
     object;
@@ -94,7 +94,7 @@ export type EventsTraits<T> =
     T extends PlaywrightChannel ? PlaywrightEvents :
     T extends RootChannel ? RootEvents :
     T extends HostChannel ? HostEvents :
-    T extends HostCDPChannelChannel ? HostCDPChannelEvents :
+    T extends HostCDPTransportChannel ? HostCDPTransportEvents :
     T extends LocalUtilsChannel ? LocalUtilsEvents :
     T extends APIRequestContextChannel ? APIRequestContextEvents :
     undefined;
@@ -133,7 +133,7 @@ export type EventTargetTraits<T> =
     T extends PlaywrightChannel ? PlaywrightEventTarget :
     T extends RootChannel ? RootEventTarget :
     T extends HostChannel ? HostEventTarget :
-    T extends HostCDPChannelChannel ? HostCDPChannelEventTarget :
+    T extends HostCDPTransportChannel ? HostCDPTransportEventTarget :
     T extends LocalUtilsChannel ? LocalUtilsEventTarget :
     T extends APIRequestContextChannel ? APIRequestContextEventTarget :
     undefined;
@@ -386,28 +386,28 @@ export type LocalUtilsZipResult = void;
 export interface LocalUtilsEvents {
 }
 
-// ----------- HostCDPChannel -----------
-export type HostCDPChannelInitializer = {};
-export interface HostCDPChannelEventTarget {
-  on(event: 'messageReceived', callback: (params: HostCDPChannelMessageReceivedEvent) => void): this;
+// ----------- HostCDPTransport -----------
+export type HostCDPTransportInitializer = {};
+export interface HostCDPTransportEventTarget {
+  on(event: 'messageReceived', callback: (params: HostCDPTransportMessageReceivedEvent) => void): this;
 }
-export interface HostCDPChannelChannel extends HostCDPChannelEventTarget, Channel {
-  _type_HostCDPChannel: boolean;
-  sendMessage(params: HostCDPChannelSendMessageParams, metadata?: Metadata): Promise<HostCDPChannelSendMessageResult>;
+export interface HostCDPTransportChannel extends HostCDPTransportEventTarget, Channel {
+  _type_HostCDPTransport: boolean;
+  sendMessage(params: HostCDPTransportSendMessageParams, metadata?: Metadata): Promise<HostCDPTransportSendMessageResult>;
 }
-export type HostCDPChannelMessageReceivedEvent = {
+export type HostCDPTransportMessageReceivedEvent = {
   message: any,
 };
-export type HostCDPChannelSendMessageParams = {
+export type HostCDPTransportSendMessageParams = {
   message: any,
 };
-export type HostCDPChannelSendMessageOptions = {
+export type HostCDPTransportSendMessageOptions = {
 
 };
-export type HostCDPChannelSendMessageResult = void;
+export type HostCDPTransportSendMessageResult = void;
 
-export interface HostCDPChannelEvents {
-  'messageReceived': HostCDPChannelMessageReceivedEvent;
+export interface HostCDPTransportEvents {
+  'messageReceived': HostCDPTransportMessageReceivedEvent;
 }
 
 // ----------- Host -----------
@@ -417,21 +417,15 @@ export interface HostEventTarget {
 export interface HostChannel extends HostEventTarget, Channel {
   _type_Host: boolean;
   initialize(params?: HostInitializeParams, metadata?: Metadata): Promise<HostInitializeResult>;
-  connect(params: HostConnectParams, metadata?: Metadata): Promise<HostConnectResult>;
+  connect(params?: HostConnectParams, metadata?: Metadata): Promise<HostConnectResult>;
 }
 export type HostInitializeParams = {};
 export type HostInitializeOptions = {};
 export type HostInitializeResult = {
-  channel: HostCDPChannelChannel,
+  transport: HostCDPTransportChannel,
 };
-export type HostConnectParams = {
-  slowMo?: number,
-  timeout?: number,
-};
-export type HostConnectOptions = {
-  slowMo?: number,
-  timeout?: number,
-};
+export type HostConnectParams = {};
+export type HostConnectOptions = {};
 export type HostConnectResult = {
   browser: BrowserChannel,
   defaultContext?: BrowserContextChannel,

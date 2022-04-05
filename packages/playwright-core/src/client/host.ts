@@ -28,17 +28,18 @@ import * as api from '../../types/types';
 import { kBrowserClosedError } from '../utils/errors';
 import { raceAgainstTimeout } from '../utils/async';
 import type { Playwright } from './playwright';
-import { HostCDPChannel } from './hostCdpChannel';
+import { HostCDPTransport } from './hostCdpTransport';
 
 export class Host extends ChannelOwner<channels.HostChannel> implements api.Host {
-    _playwright!: Playwright;
-
     static from(host: channels.HostChannel): Host {
         return (host as any)._object;
     }
 
-    async initialize(channel: HostCDPChannel) {
-        await this._channel.initialize({ channel: channel._channel });
+    _playwright!: Playwright;
+
+    async initialize(): Promise<HostCDPTransport> {
+        const result = await this._channel.initialize();
+        return HostCDPTransport.from(result.transport);
     }
 
     async connect(): Promise<Browser> {

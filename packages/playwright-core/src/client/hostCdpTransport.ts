@@ -30,8 +30,20 @@
  import { raceAgainstTimeout } from '../utils/async';
  import type { Playwright } from './playwright';
  
-export class HostCDPChannel extends ChannelOwner<channels.HostCDPChannelChannel> implements api.HostCDPChannel {
-    async send(message: object) {
+export class HostCDPTransport extends ChannelOwner<channels.HostCDPTransportChannel> implements api.HostCDPTransport {
+    static from(handle: channels.HostCDPTransportChannel): HostCDPTransport {
+        return (handle as any)._object;
+    }
 
+    constructor(parent: ChannelOwner, type: string, guid: string, initializer: channels.HostCDPTransportInitializer) {
+        super(parent, type, guid, initializer);
+
+        this._channel.on('messageReceived', (params) => {
+            this.emit('messageReceived', params.message);
+        });
+    }
+
+    async sendMessage(message: Object): Promise<void> {
+        await this._channel.sendMessage({ message });
     }
 }
