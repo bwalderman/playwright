@@ -13865,37 +13865,18 @@ export interface FrameLocator {
 }
 
 /**
- * Page provides methods to interact with a single tab in a [Browser], or an
- * [extension background page](https://developer.chrome.com/extensions/background_pages) in Chromium. One [Browser]
- * instance might have multiple [Page] instances.
- *
- * This example creates a page, navigates it to a URL, and then saves a screenshot:
- *
- * ```js
- * a
- * ```
- *
+ * Host provides methods to interact with the hosting browser process when Playwright is running in embedded mode.
  */
 export interface Host {
   /**
-   * This methods attaches Playwright to an existing browser instance using the Chrome DevTools Protocol.
-   *
-   * The default browser context is accessible via
-   * [browser.contexts()](https://playwright.dev/docs/api/class-browser#browser-contexts).
-   *
-   * > NOTE: Connecting over the Chrome DevTools Protocol is only supported for Chromium-based browsers.
-   * @param channel URL to navigate page to. The url should include scheme, e.g. `https://`. When a `baseURL` via the context options was provided and the passed URL is a path, it gets merged via the
-   * [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor.
+   * Called once by the embedder to establish a communication channel between Playwright and the embedder.
+   * @param transport A transport object that Playwright can use to connect to the host browser process. The embeding host browser should add an event listen on the transport object to be notified when Playwright sends a CDP request.
    */
-  initialize(channel: HostCDPChannel): Promise<void>;
+  initialize(transport: HostCDPTransport): Promise<void>;
 
   /**
-   * This methods attaches Playwright to an existing browser instance using the Chrome DevTools Protocol.
-   *
-   * The default browser context is accessible via
-   * [browser.contexts()](https://playwright.dev/docs/api/class-browser#browser-contexts).
-   *
-   * > NOTE: Connecting over the Chrome DevTools Protocol is only supported for Chromium-based browsers.
+   * This methods attaches Playwright to the host browser process using the Chrome DevTools Protocol transport established
+   * with a call to Host.initialize.
    */
   connect(): Promise<Browser>;
 }
@@ -13903,27 +13884,37 @@ export interface Host {
 /**
  * - extends: [EventEmitter]
  *
- * Page provides methods to interact with a single tab in a [Browser], or an
- * [extension background page](https://developer.chrome.com/extensions/background_pages) in Chromium. One [Browser]
- * instance might have multiple [Page] instances.
- *
- * This example creates a page, navigates it to a URL, and then saves a screenshot:
- *
- * ```js
- * a
- * ```
- *
+ * Provides a mechanism for Playwright to communicate with a host browser process when running in embedded mode.
  */
-export interface HostCDPChannel extends EventEmitter {
+export interface HostCDPTransport extends EventEmitter {
   /**
-   * This methods attaches Playwright to an existing browser instance using the Chrome DevTools Protocol.
-   *
-   * The default browser context is accessible via
-   * [browser.contexts()](https://playwright.dev/docs/api/class-browser#browser-contexts).
-   *
-   * > NOTE: Connecting over the Chrome DevTools Protocol is only supported for Chromium-based browsers.
-   * @param message URL to navigate page to. The url should include scheme, e.g. `https://`. When a `baseURL` via the context options was provided and the passed URL is a path, it gets merged via the
-   * [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor.
+   * Emitted by Playwright to send a CDP message to the host browser process.
+   */
+  on(event: 'message', listener: (object: Object) => void): this;
+
+  /**
+   * Adds an event listener that will be automatically removed after it is triggered once. See `addListener` for more information about this event.
+   */
+  once(event: 'message', listener: (object: Object) => void): this;
+
+  /**
+   * Emitted by Playwright to send a CDP message to the host browser process.
+   */
+  addListener(event: 'message', listener: (object: Object) => void): this;
+
+  /**
+   * Removes an event listener added by `on` or `addListener`.
+   */
+  removeListener(event: 'message', listener: (object: Object) => void): this;
+
+  /**
+   * Removes an event listener added by `on` or `addListener`.
+   */
+  off(event: 'message', listener: (object: Object) => void): this;
+
+  /**
+   * The host browser process uses this method to send a raw CDP message to Playwright.
+   * @param message The message to send.
    */
   send(message: Object): Promise<Browser>;
 }
